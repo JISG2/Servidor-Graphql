@@ -68,11 +68,11 @@ const eliminarEncuesta = (id) =>{
 }
 
 
-const updateEncuesta = (idencuesta,nombre,descripcion,status)=>{
+const updateEncuesta = (idencuesta,nombre,descripcion,status,encuesta)=>{
     console.log("Actualizando encuesta..."+idencuesta+nombre) 
-    return knex('encuestas').where('idencuesta',idencuesta).update({nombre: nombre, descripcion: descripcion,status:status}).then((response)=>{
+    return knex('encuestas').where('idencuesta',idencuesta).update({nombre: nombre, descripcion: descripcion,status:status,encuesta:encuesta}).then((response)=>{
         console.log("response",response)
-        let respuesta = {idencuesta: response[0], nombre: nombre, descripcion:descripcion,status: status}
+        let respuesta = {idencuesta:idencuesta, nombre: nombre, descripcion:descripcion,status: status,encuesta: encuesta}
         console.log("respuesta: ",respuesta)
         return respuesta
     })
